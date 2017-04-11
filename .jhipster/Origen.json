@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "peticion",
+            "otherEntityName": "peticion",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "origen"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "privilegio",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "zona",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "distrito",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "municipio",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170411182809",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "origen",
+    "pagination": "infinite-scroll"
+}

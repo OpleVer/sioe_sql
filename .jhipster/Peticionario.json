@@ -1,0 +1,22 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "peticion",
+            "otherEntityName": "peticion",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "peticionario"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "tipo",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170411182838",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "peticionario",
+    "pagination": "infinite-scroll"
+}

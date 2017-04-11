@@ -1,0 +1,148 @@
+
+<div>
+    <h2><span>Expeiente de la Peticion:</span> {{vm.peticion.numero}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="sioeSqlApp.peticion.nombre_solicitante">Nombre Solicitante</span></dt>
+        <dd>
+            <span>{{vm.peticion.nombre_solicitante}}</span>
+        </dd>
+        <dt><span data-translate="sioeSqlApp.peticion.paterno_solicitante">Paterno Solicitante</span></dt>
+        <dd>
+            <span>{{vm.peticion.paterno_solicitante}}</span>
+        </dd>
+        <dt><span data-translate="sioeSqlApp.peticion.materno_solicitante">Materno Solicitante</span></dt>
+        <dd>
+            <span>{{vm.peticion.materno_solicitante}}</span>
+        </dd>
+        <dt><span data-translate="sioeSqlApp.peticion.cargo_solicitante">Cargo Solicitante</span></dt>
+        <dd>
+            <span>{{vm.peticion.cargo_solicitante}}</span>
+        </dd>
+        <dt><span data-translate="sioeSqlApp.peticion.direccion_solicitante">Direccion Solicitante</span></dt>
+        <dd>
+            <span>{{vm.peticion.direccion_solicitante}}</span>
+        </dd>
+        <dt><span data-translate="sioeSqlApp.peticion.acto_constar">Acto Constar</span></dt>
+        <dd>
+            <span>{{vm.peticion.acto_constar}}</span>
+        </dd>
+        <dt><span>Fecha</span></dt>
+        <dd>
+            <span>{{vm.peticion.fecha | date:'medium'}}</span>
+        </dd>
+        <dt><span>Oficio</span></dt>
+        <dd>
+            <div ng-if="vm.peticion.oficio">
+                <a ng-click="vm.openFile(vm.peticion.oficioContentType, vm.peticion.oficio)">open</a>
+                {{vm.peticion.oficioContentType}}, {{vm.byteSize(vm.peticion.oficio)}}
+            </div>
+        </dd>
+        <dt><span>Responsable</span></dt>
+        <dd>
+            <span>{{vm.peticion.responsable}}</span>
+        </dd>
+        <dt><span data-translate="sioeSqlApp.peticion.status_prevencion">Status Prevencion</span></dt>
+        <dd>
+            <span>{{vm.peticion.status_prevencion}}</span>
+        </dd>
+        <dt><span data-translate="sioeSqlApp.peticion.oficio_prevencion">Oficio Prevencion</span></dt>
+        <dd>
+            <div ng-if="vm.peticion.oficio_prevencion">
+                <a ng-click="vm.openFile(vm.peticion.oficio_prevencionContentType, vm.peticion.oficio_prevencion)">open</a>
+                {{vm.peticion.oficio_prevencionContentType}}, {{vm.byteSize(vm.peticion.oficio_prevencion)}}
+            </div>
+        </dd>
+        <dt><span data-translate="sioeSqlApp.peticion.notificacion_prevencion">Notificacion Prevencion</span></dt>
+        <dd>
+            <div ng-if="vm.peticion.notificacion_prevencion">
+                <a ng-click="vm.openFile(vm.peticion.notificacion_prevencionContentType, vm.peticion.notificacion_prevencion)">open</a>
+                {{vm.peticion.notificacion_prevencionContentType}}, {{vm.byteSize(vm.peticion.notificacion_prevencion)}}
+            </div>
+        </dd>
+        <dt><span data-translate="sioeSqlApp.peticion.respuesta_prevencion">Respuesta Prevencion</span></dt>
+        <dd>
+            <div ng-if="vm.peticion.respuesta_prevencion">
+                <a ng-click="vm.openFile(vm.peticion.respuesta_prevencionContentType, vm.peticion.respuesta_prevencion)">open</a>
+                {{vm.peticion.respuesta_prevencionContentType}}, {{vm.byteSize(vm.peticion.respuesta_prevencion)}}
+            </div>
+        </dd>
+        <dt><span data-translate="sioeSqlApp.peticion.tipo_evaluacion">Tipo Evaluacion</span></dt>
+        <dd>
+            <span>{{vm.peticion.tipo_evaluacion}}</span>
+        </dd>
+        <dt><span data-translate="sioeSqlApp.peticion.acta_procede">Acta Procede</span></dt>
+        <dd>
+            <div ng-if="vm.peticion.acta_procede">
+                <a ng-click="vm.openFile(vm.peticion.acta_procedeContentType, vm.peticion.acta_procede)">open</a>
+                {{vm.peticion.acta_procedeContentType}}, {{vm.byteSize(vm.peticion.acta_procede)}}
+            </div>
+        </dd>
+        <dt><span data-translate="sioeSqlApp.peticion.acuerdo_procede">Acuerdo Procede</span></dt>
+        <dd>
+            <div ng-if="vm.peticion.acuerdo_procede">
+                <a ng-click="vm.openFile(vm.peticion.acuerdo_procedeContentType, vm.peticion.acuerdo_procede)">open</a>
+                {{vm.peticion.acuerdo_procedeContentType}}, {{vm.byteSize(vm.peticion.acuerdo_procede)}}
+            </div>
+        </dd>
+        <dt><span data-translate="sioeSqlApp.peticion.notificacion_procede">Notificacion Procede</span></dt>
+        <dd>
+            <div ng-if="vm.peticion.notificacion_procede">
+                <a ng-click="vm.openFile(vm.peticion.notificacion_procedeContentType, vm.peticion.notificacion_procede)">open</a>
+                {{vm.peticion.notificacion_procedeContentType}}, {{vm.byteSize(vm.peticion.notificacion_procede)}}
+            </div>
+        </dd>
+        <dt><span data-translate="sioeSqlApp.peticion.acuerdo_noprocede">Acuerdo Noprocede</span></dt>
+        <dd>
+            <div ng-if="vm.peticion.acuerdo_noprocede">
+                <a ng-click="vm.openFile(vm.peticion.acuerdo_noprocedeContentType, vm.peticion.acuerdo_noprocede)">open</a>
+                {{vm.peticion.acuerdo_noprocedeContentType}}, {{vm.byteSize(vm.peticion.acuerdo_noprocede)}}
+            </div>
+        </dd>
+        <dt><span data-translate="sioeSqlApp.peticion.notificacion_noprocede">Notificacion Noprocede</span></dt>
+        <dd>
+            <div ng-if="vm.peticion.notificacion_noprocede">
+                <a ng-click="vm.openFile(vm.peticion.notificacion_noprocedeContentType, vm.peticion.notificacion_noprocede)">open</a>
+                {{vm.peticion.notificacion_noprocedeContentType}}, {{vm.byteSize(vm.peticion.notificacion_noprocede)}}
+            </div>
+        </dd>
+        <dt><span data-translate="sioeSqlApp.peticion.acuerdo_presentacion">Acuerdo Presentacion</span></dt>
+        <dd>
+            <div ng-if="vm.peticion.acuerdo_presentacion">
+                <a ng-click="vm.openFile(vm.peticion.acuerdo_presentacionContentType, vm.peticion.acuerdo_presentacion)">open</a>
+                {{vm.peticion.acuerdo_presentacionContentType}}, {{vm.byteSize(vm.peticion.acuerdo_presentacion)}}
+            </div>
+        </dd>
+        <dt><span data-translate="sioeSqlApp.peticion.notificacion_presentacion">Notificacion Presentacion</span></dt>
+        <dd>
+            <div ng-if="vm.peticion.notificacion_presentacion">
+                <a ng-click="vm.openFile(vm.peticion.notificacion_presentacionContentType, vm.peticion.notificacion_presentacion)">open</a>
+                {{vm.peticion.notificacion_presentacionContentType}}, {{vm.byteSize(vm.peticion.notificacion_presentacion)}}
+            </div>
+        </dd>
+        <dt><span data-translate="sioeSqlApp.peticion.status_trabajo">Status Trabajo</span></dt>
+        <dd>
+            <span>{{vm.peticion.status_trabajo}}</span>
+        </dd>
+        <dt><span>Origen</span></dt>
+        <dd>
+            <a ui-sref="origen-detail({id:vm.peticion.origen.id})">{{vm.peticion.origen.id}}</a>
+        </dd>
+        <dt><span>Peticionario</span></dt>
+        <dd>
+            <a ui-sref="peticionario-detail({id:vm.peticion.peticionario.id})">{{vm.peticion.peticionario.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="peticion-detail.edit({id:vm.peticion.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>
