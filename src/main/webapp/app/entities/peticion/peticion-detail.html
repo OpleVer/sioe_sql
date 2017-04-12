@@ -1,6 +1,6 @@
 
 <div>
-    <h2><span>Expeiente de la Peticion:</span> {{vm.peticion.numero}}</h2>
+    <h2><span>Expediente Peticion:</span> {{vm.peticion.numero}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
@@ -127,11 +127,11 @@
         </dd>
         <dt><span>Origen</span></dt>
         <dd>
-            <a ui-sref="origen-detail({id:vm.peticion.origen.id})">{{vm.peticion.origen.id}}</a>
+            <a ui-sref="origen-detail({id:vm.peticion.origen.nombre})">{{vm.peticion.origen.nombre}}</a>
         </dd>
         <dt><span>Peticionario</span></dt>
         <dd>
-            <a ui-sref="peticionario-detail({id:vm.peticion.peticionario.id})">{{vm.peticion.peticionario.id}}</a>
+            <a ui-sref="peticionario-detail({id:vm.peticion.peticionario.tipo})">{{vm.peticion.peticionario.tipo}}</a>
         </dd>
     </dl>
 

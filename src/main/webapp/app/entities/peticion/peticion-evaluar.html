@@ -1,0 +1,198 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myPeticionLabel">Evaluar</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <!--<div class="form-group" ng-show="vm.peticion.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.peticion.id" readonly />
+        </div>-->
+        <div>
+        <div class="form-group">
+            <label class="control-label" for="field_numero">Numero</label>
+            <input type="text" class="form-control" name="numero" id="field_numero"
+                    ng-model="vm.peticion.numero"
+                    required readonly/>
+        </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sioeSqlApp.peticion.tipo_evaluacion" for="field_tipo_evaluacion">Tipo Evaluacion</label>
+            <input type="number" class="form-control" name="tipo_evaluacion" id="field_tipo_evaluacion"
+                    ng-model="vm.peticion.tipo_evaluacion"
+                    />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setActa_procede($file, vm.peticion)">
+            <label class="control-label" data-translate="sioeSqlApp.peticion.acta_procede" for="field_acta_procede">Acta Procede</label>
+            <div>
+                <div ng-if="vm.peticion.acta_procede" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.peticion.acta_procedeContentType, vm.peticion.acta_procede)">open</a><br>
+                    <span class="pull-left">{{vm.peticion.acta_procedeContentType}}, {{vm.byteSize(vm.peticion.acta_procede)}}</span>
+                    <button type="button" ng-click="vm.peticion.acta_procede=null;vm.peticion.acta_procedeContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setActa_procede($file, vm.peticion)">
+                    PDF
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="acta_procede" id="field_acta_procede"
+                    ng-model="vm.peticion.acta_procede"
+                    />
+            <input type="hidden" class="form-control" name="acta_procedeContentType" id="field_acta_procedeContentType"
+                    ng-model="vm.peticion.acta_procedeContentType" />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setAcuerdo_procede($file, vm.peticion)">
+            <label class="control-label" data-translate="sioeSqlApp.peticion.acuerdo_procede" for="field_acuerdo_procede">Acuerdo Procede</label>
+            <div>
+                <div ng-if="vm.peticion.acuerdo_procede" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.peticion.acuerdo_procedeContentType, vm.peticion.acuerdo_procede)">open</a><br>
+                    <span class="pull-left">{{vm.peticion.acuerdo_procedeContentType}}, {{vm.byteSize(vm.peticion.acuerdo_procede)}}</span>
+                    <button type="button" ng-click="vm.peticion.acuerdo_procede=null;vm.peticion.acuerdo_procedeContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setAcuerdo_procede($file, vm.peticion)">
+                    PDF
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="acuerdo_procede" id="field_acuerdo_procede"
+                    ng-model="vm.peticion.acuerdo_procede"
+                    />
+            <input type="hidden" class="form-control" name="acuerdo_procedeContentType" id="field_acuerdo_procedeContentType"
+                    ng-model="vm.peticion.acuerdo_procedeContentType" />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setNotificacion_procede($file, vm.peticion)">
+            <label class="control-label" data-translate="sioeSqlApp.peticion.notificacion_procede" for="field_notificacion_procede">Notificacion Procede</label>
+            <div>
+                <div ng-if="vm.peticion.notificacion_procede" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.peticion.notificacion_procedeContentType, vm.peticion.notificacion_procede)">open</a><br>
+                    <span class="pull-left">{{vm.peticion.notificacion_procedeContentType}}, {{vm.byteSize(vm.peticion.notificacion_procede)}}</span>
+                    <button type="button" ng-click="vm.peticion.notificacion_procede=null;vm.peticion.notificacion_procedeContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setNotificacion_procede($file, vm.peticion)">
+                    PDF
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="notificacion_procede" id="field_notificacion_procede"
+                    ng-model="vm.peticion.notificacion_procede"
+                    />
+            <input type="hidden" class="form-control" name="notificacion_procedeContentType" id="field_notificacion_procedeContentType"
+                    ng-model="vm.peticion.notificacion_procedeContentType" />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setAcuerdo_noprocede($file, vm.peticion)">
+            <label class="control-label" data-translate="sioeSqlApp.peticion.acuerdo_noprocede" for="field_acuerdo_noprocede">Acuerdo Noprocede</label>
+            <div>
+                <div ng-if="vm.peticion.acuerdo_noprocede" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.peticion.acuerdo_noprocedeContentType, vm.peticion.acuerdo_noprocede)">open</a><br>
+                    <span class="pull-left">{{vm.peticion.acuerdo_noprocedeContentType}}, {{vm.byteSize(vm.peticion.acuerdo_noprocede)}}</span>
+                    <button type="button" ng-click="vm.peticion.acuerdo_noprocede=null;vm.peticion.acuerdo_noprocedeContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setAcuerdo_noprocede($file, vm.peticion)">
+                    PDF
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="acuerdo_noprocede" id="field_acuerdo_noprocede"
+                    ng-model="vm.peticion.acuerdo_noprocede"
+                    />
+            <input type="hidden" class="form-control" name="acuerdo_noprocedeContentType" id="field_acuerdo_noprocedeContentType"
+                    ng-model="vm.peticion.acuerdo_noprocedeContentType" />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setNotificacion_noprocede($file, vm.peticion)">
+            <label class="control-label" data-translate="sioeSqlApp.peticion.notificacion_noprocede" for="field_notificacion_noprocede">Notificacion Noprocede</label>
+            <div>
+                <div ng-if="vm.peticion.notificacion_noprocede" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.peticion.notificacion_noprocedeContentType, vm.peticion.notificacion_noprocede)">open</a><br>
+                    <span class="pull-left">{{vm.peticion.notificacion_noprocedeContentType}}, {{vm.byteSize(vm.peticion.notificacion_noprocede)}}</span>
+                    <button type="button" ng-click="vm.peticion.notificacion_noprocede=null;vm.peticion.notificacion_noprocedeContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setNotificacion_noprocede($file, vm.peticion)">
+                    PDF
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="notificacion_noprocede" id="field_notificacion_noprocede"
+                    ng-model="vm.peticion.notificacion_noprocede"
+                    />
+            <input type="hidden" class="form-control" name="notificacion_noprocedeContentType" id="field_notificacion_noprocedeContentType"
+                    ng-model="vm.peticion.notificacion_noprocedeContentType" />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setAcuerdo_presentacion($file, vm.peticion)">
+            <label class="control-label" data-translate="sioeSqlApp.peticion.acuerdo_presentacion" for="field_acuerdo_presentacion">Acuerdo Presentacion</label>
+            <div>
+                <div ng-if="vm.peticion.acuerdo_presentacion" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.peticion.acuerdo_presentacionContentType, vm.peticion.acuerdo_presentacion)">open</a><br>
+                    <span class="pull-left">{{vm.peticion.acuerdo_presentacionContentType}}, {{vm.byteSize(vm.peticion.acuerdo_presentacion)}}</span>
+                    <button type="button" ng-click="vm.peticion.acuerdo_presentacion=null;vm.peticion.acuerdo_presentacionContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setAcuerdo_presentacion($file, vm.peticion)">
+                    PDF
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="acuerdo_presentacion" id="field_acuerdo_presentacion"
+                    ng-model="vm.peticion.acuerdo_presentacion"
+                    />
+            <input type="hidden" class="form-control" name="acuerdo_presentacionContentType" id="field_acuerdo_presentacionContentType"
+                    ng-model="vm.peticion.acuerdo_presentacionContentType" />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setNotificacion_presentacion($file, vm.peticion)">
+            <label class="control-label" data-translate="sioeSqlApp.peticion.notificacion_presentacion" for="field_notificacion_presentacion">Notificacion Presentacion</label>
+            <div>
+                <div ng-if="vm.peticion.notificacion_presentacion" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.peticion.notificacion_presentacionContentType, vm.peticion.notificacion_presentacion)">open</a><br>
+                    <span class="pull-left">{{vm.peticion.notificacion_presentacionContentType}}, {{vm.byteSize(vm.peticion.notificacion_presentacion)}}</span>
+                    <button type="button" ng-click="vm.peticion.notificacion_presentacion=null;vm.peticion.notificacion_presentacionContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setNotificacion_presentacion($file, vm.peticion)">
+                    PDF
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="notificacion_presentacion" id="field_notificacion_presentacion"
+                    ng-model="vm.peticion.notificacion_presentacion"
+                    />
+            <input type="hidden" class="form-control" name="notificacion_presentacionContentType" id="field_notificacion_presentacionContentType"
+                    ng-model="vm.peticion.notificacion_presentacionContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sioeSqlApp.peticion.status_trabajo" for="field_status_trabajo">Status Trabajo</label>
+                <input type="checkbox" name="status_trabajo" id="field_status_trabajo"
+                          ng-model="vm.peticion.status_trabajo"/>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

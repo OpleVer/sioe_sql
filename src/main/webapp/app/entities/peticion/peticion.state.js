@@ -164,12 +164,62 @@
             parent: 'peticion',
             url: '/{id}/edit',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_ADMIN']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/peticion/peticion-dialog.html',
                     controller: 'PeticionDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['Peticion', function(Peticion) {
+                            return Peticion.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('peticion', null, { reload: 'peticion' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
+        .state('peticion.remitir', {
+            parent: 'peticion',
+            url: '/{id}/remitir',
+            data: {
+                authorities: ['ROLE_ADMIN']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/peticion/peticion-remitir.html',
+                    controller: 'PeticionRemitirController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['Peticion', function(Peticion) {
+                            return Peticion.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('peticion', null, { reload: 'peticion' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
+        .state('peticion.evaluar', {
+            parent: 'peticion',
+            url: '/{id}/evaluar',
+            data: {
+                authorities: ['ROLE_ADMIN']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/peticion/peticion-evaluar.html',
+                    controller: 'PeticionEvaluarController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
