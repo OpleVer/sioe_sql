@@ -4,6 +4,10 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
+      <dt><span>Peticionario</span></dt>
+      <dd>
+          <p>{{vm.peticion.peticionario.tipo}}</p>
+      </dd>
         <dt><span data-translate="sioeSqlApp.peticion.nombre_solicitante">Nombre Solicitante</span></dt>
         <dd>
             <span>{{vm.peticion.nombre_solicitante}}</span>
@@ -36,14 +40,18 @@
         <dd>
             <div ng-if="vm.peticion.oficio">
                 <a ng-click="vm.openFile(vm.peticion.oficioContentType, vm.peticion.oficio)">open</a>
-                {{vm.peticion.oficioContentType}}, {{vm.byteSize(vm.peticion.oficio)}}
+                <!--{{vm.peticion.oficioContentType}},{{vm.byteSize(vm.peticion.oficio)}}-->
             </div>
+        </dd>
+        <dt><span>Autoridad</span></dt>
+        <dd>
+            <p>{{vm.peticion.origen.nombre}}</p>
         </dd>
         <dt><span>Responsable</span></dt>
         <dd>
             <span>{{vm.peticion.responsable}}</span>
         </dd>
-        <dt><span data-translate="sioeSqlApp.peticion.status_prevencion">Status Prevencion</span></dt>
+      <!--  <dt><span data-translate="sioeSqlApp.peticion.status_prevencion">Status Prevencion</span></dt>
         <dd>
             <span>{{vm.peticion.status_prevencion}}</span>
         </dd>
@@ -124,25 +132,19 @@
         <dt><span data-translate="sioeSqlApp.peticion.status_trabajo">Status Trabajo</span></dt>
         <dd>
             <span>{{vm.peticion.status_trabajo}}</span>
-        </dd>
-        <dt><span>Origen</span></dt>
-        <dd>
-            <a ui-sref="origen-detail({id:vm.peticion.origen.nombre})">{{vm.peticion.origen.nombre}}</a>
-        </dd>
-        <dt><span>Peticionario</span></dt>
-        <dd>
-            <a ui-sref="peticionario-detail({id:vm.peticion.peticionario.tipo})">{{vm.peticion.peticionario.tipo}}</a>
-        </dd>
+        </dd>-->
+
+
     </dl>
 
     <button type="submit"
             ui-sref="{{ vm.previousState }}"
             class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Atras</span>
     </button>
 
-    <button type="button" ui-sref="peticion-detail.edit({id:vm.peticion.id})" class="btn btn-primary">
+    <!--<button type="button" ui-sref="peticion-detail.edit({id:vm.peticion.id})" class="btn btn-primary">
         <span class="glyphicon glyphicon-pencil"></span>
         <span class="hidden-sm-down"> Edit</span>
-    </button>
+    </button>-->
 </div>

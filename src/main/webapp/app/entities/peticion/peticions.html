@@ -43,7 +43,7 @@
                     <td>{{peticion.numero}}</td>
                     <td>{{peticion.fecha | date:'short'}}</td>
                     <td>
-                        <p ui-sref="peticionario-detail({id:peticion.peticionario.tipo})">{{peticion.peticionario.tipo}}</p>
+                        <p>{{peticion.peticionario.tipo}}</p>
                     </td>
                     <!--<td>{{peticion.nombre_solicitante}} {{peticion.paterno_solicitante}}</td>
                     <td>{{peticion.paterno_solicitante}}</td>
@@ -57,7 +57,7 @@
                         <span ng-if="peticion.oficio">{{peticion.oficioContentType}}, {{vm.byteSize(peticion.oficio)}}</span>
                     </td>-->
                     <td>
-                        <p ui-sref="usuario-detail({id:peticion.origen.nombre})">{{peticion.origen.nombre}}</p>
+                        <p>{{peticion.origen.nombre}}</p>
                     </td>
                     <td>campo estatus</td>
                     <td>
@@ -72,7 +72,7 @@
                                 <span class="hidden-sm-down"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="peticion.edit({id:peticion.id})"
+                                    ui-sref="({id:peticion.id})"
                                     class="btn btn-primary btn-sm">
                                 <span class="glyphicon glyphicon-paperclip"></span>
                                 <span class="hidden-sm-down"></span>
