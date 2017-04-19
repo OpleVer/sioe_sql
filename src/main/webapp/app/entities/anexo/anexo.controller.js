@@ -3,11 +3,11 @@
 
     angular
         .module('sioeSqlApp')
-        .controller('PeticionController', PeticionController);
+        .controller('AnexoController', AnexoController);
 
-    PeticionController.$inject = ['$state', 'Peticion', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+    AnexoController.$inject = ['$state', 'Anexo', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
 
-    function PeticionController($state, Peticion, ParseLinks, AlertService, paginationConstants, pagingParams) {
+    function AnexoController($state, Anexo, ParseLinks, AlertService, paginationConstants, pagingParams) {
 
         var vm = this;
 
@@ -20,7 +20,7 @@
         loadAll();
 
         function loadAll () {
-            Peticion.query({
+            Anexo.query({
                 page: pagingParams.page - 1,
                 size: vm.itemsPerPage,
                 sort: sort()
@@ -36,7 +36,7 @@
                 vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
-                vm.peticions = data;
+                vm.anexos = data;
                 vm.page = pagingParams.page;
             }
             function onError(error) {

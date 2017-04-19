@@ -22,7 +22,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Base64Utils;
 
 import javax.persistence.EntityManager;
 import java.time.Instant;
@@ -70,72 +69,41 @@ public class PeticionResourceIntTest {
     private static final ZonedDateTime DEFAULT_FECHA = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
     private static final ZonedDateTime UPDATED_FECHA = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
-    private static final byte[] DEFAULT_OFICIO = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_OFICIO = TestUtil.createByteArray(2, "1");
-    private static final String DEFAULT_OFICIO_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_OFICIO_CONTENT_TYPE = "image/png";
-
     private static final String DEFAULT_RESPONSABLE = "AAAAAAAAAA";
     private static final String UPDATED_RESPONSABLE = "BBBBBBBBBB";
 
     private static final Boolean DEFAULT_STATUS_PREVENCION = false;
     private static final Boolean UPDATED_STATUS_PREVENCION = true;
 
-    private static final byte[] DEFAULT_OFICIO_PREVENCION = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_OFICIO_PREVENCION = TestUtil.createByteArray(2, "1");
-    private static final String DEFAULT_OFICIO_PREVENCION_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_OFICIO_PREVENCION_CONTENT_TYPE = "image/png";
-
-    private static final byte[] DEFAULT_NOTIFICACION_PREVENCION = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_NOTIFICACION_PREVENCION = TestUtil.createByteArray(2, "1");
-    private static final String DEFAULT_NOTIFICACION_PREVENCION_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_NOTIFICACION_PREVENCION_CONTENT_TYPE = "image/png";
-
-    private static final byte[] DEFAULT_RESPUESTA_PREVENCION = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_RESPUESTA_PREVENCION = TestUtil.createByteArray(2, "1");
-    private static final String DEFAULT_RESPUESTA_PREVENCION_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_RESPUESTA_PREVENCION_CONTENT_TYPE = "image/png";
-
     private static final Integer DEFAULT_TIPO_EVALUACION = 1;
     private static final Integer UPDATED_TIPO_EVALUACION = 2;
 
-    private static final byte[] DEFAULT_ACTA_PROCEDE = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_ACTA_PROCEDE = TestUtil.createByteArray(2, "1");
-    private static final String DEFAULT_ACTA_PROCEDE_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_ACTA_PROCEDE_CONTENT_TYPE = "image/png";
-
-    private static final byte[] DEFAULT_ACUERDO_PROCEDE = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_ACUERDO_PROCEDE = TestUtil.createByteArray(2, "1");
-    private static final String DEFAULT_ACUERDO_PROCEDE_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_ACUERDO_PROCEDE_CONTENT_TYPE = "image/png";
-
-    private static final byte[] DEFAULT_NOTIFICACION_PROCEDE = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_NOTIFICACION_PROCEDE = TestUtil.createByteArray(2, "1");
-    private static final String DEFAULT_NOTIFICACION_PROCEDE_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_NOTIFICACION_PROCEDE_CONTENT_TYPE = "image/png";
-
-    private static final byte[] DEFAULT_ACUERDO_NOPROCEDE = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_ACUERDO_NOPROCEDE = TestUtil.createByteArray(2, "1");
-    private static final String DEFAULT_ACUERDO_NOPROCEDE_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_ACUERDO_NOPROCEDE_CONTENT_TYPE = "image/png";
-
-    private static final byte[] DEFAULT_NOTIFICACION_NOPROCEDE = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_NOTIFICACION_NOPROCEDE = TestUtil.createByteArray(2, "1");
-    private static final String DEFAULT_NOTIFICACION_NOPROCEDE_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_NOTIFICACION_NOPROCEDE_CONTENT_TYPE = "image/png";
-
-    private static final byte[] DEFAULT_ACUERDO_PRESENTACION = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_ACUERDO_PRESENTACION = TestUtil.createByteArray(2, "1");
-    private static final String DEFAULT_ACUERDO_PRESENTACION_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_ACUERDO_PRESENTACION_CONTENT_TYPE = "image/png";
-
-    private static final byte[] DEFAULT_NOTIFICACION_PRESENTACION = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_NOTIFICACION_PRESENTACION = TestUtil.createByteArray(2, "1");
-    private static final String DEFAULT_NOTIFICACION_PRESENTACION_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_NOTIFICACION_PRESENTACION_CONTENT_TYPE = "image/png";
-
     private static final Boolean DEFAULT_STATUS_TRABAJO = false;
     private static final Boolean UPDATED_STATUS_TRABAJO = true;
+
+    private static final String DEFAULT_OFICIO = "AAAAAAAAAA";
+    private static final String UPDATED_OFICIO = "BBBBBBBBBB";
+
+    private static final String DEFAULT_OFICIO_PREVENCION = "AAAAAAAAAA";
+    private static final String UPDATED_OFICIO_PREVENCION = "BBBBBBBBBB";
+
+    private static final String DEFAULT_NOTIFICACION_PREVENCION = "AAAAAAAAAA";
+    private static final String UPDATED_NOTIFICACION_PREVENCION = "BBBBBBBBBB";
+
+    private static final String DEFAULT_RESPUESTA_PREVENCION = "AAAAAAAAAA";
+    private static final String UPDATED_RESPUESTA_PREVENCION = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ACTA = "AAAAAAAAAA";
+    private static final String UPDATED_ACTA = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ACUERDO = "AAAAAAAAAA";
+    private static final String UPDATED_ACUERDO = "BBBBBBBBBB";
+
+    private static final String DEFAULT_NOTIFICACION = "AAAAAAAAAA";
+    private static final String UPDATED_NOTIFICACION = "BBBBBBBBBB";
+
+    private static final String DEFAULT_RESPUESTA = "AAAAAAAAAA";
+    private static final String UPDATED_RESPUESTA = "BBBBBBBBBB";
 
     @Autowired
     private PeticionRepository peticionRepository;
@@ -185,32 +153,18 @@ public class PeticionResourceIntTest {
             .direccion_solicitante(DEFAULT_DIRECCION_SOLICITANTE)
             .acto_constar(DEFAULT_ACTO_CONSTAR)
             .fecha(DEFAULT_FECHA)
-            .oficio(DEFAULT_OFICIO)
-            .oficioContentType(DEFAULT_OFICIO_CONTENT_TYPE)
             .responsable(DEFAULT_RESPONSABLE)
             .status_prevencion(DEFAULT_STATUS_PREVENCION)
-            .oficio_prevencion(DEFAULT_OFICIO_PREVENCION)
-            .oficio_prevencionContentType(DEFAULT_OFICIO_PREVENCION_CONTENT_TYPE)
-            .notificacion_prevencion(DEFAULT_NOTIFICACION_PREVENCION)
-            .notificacion_prevencionContentType(DEFAULT_NOTIFICACION_PREVENCION_CONTENT_TYPE)
-            .respuesta_prevencion(DEFAULT_RESPUESTA_PREVENCION)
-            .respuesta_prevencionContentType(DEFAULT_RESPUESTA_PREVENCION_CONTENT_TYPE)
             .tipo_evaluacion(DEFAULT_TIPO_EVALUACION)
-            .acta_procede(DEFAULT_ACTA_PROCEDE)
-            .acta_procedeContentType(DEFAULT_ACTA_PROCEDE_CONTENT_TYPE)
-            .acuerdo_procede(DEFAULT_ACUERDO_PROCEDE)
-            .acuerdo_procedeContentType(DEFAULT_ACUERDO_PROCEDE_CONTENT_TYPE)
-            .notificacion_procede(DEFAULT_NOTIFICACION_PROCEDE)
-            .notificacion_procedeContentType(DEFAULT_NOTIFICACION_PROCEDE_CONTENT_TYPE)
-            .acuerdo_noprocede(DEFAULT_ACUERDO_NOPROCEDE)
-            .acuerdo_noprocedeContentType(DEFAULT_ACUERDO_NOPROCEDE_CONTENT_TYPE)
-            .notificacion_noprocede(DEFAULT_NOTIFICACION_NOPROCEDE)
-            .notificacion_noprocedeContentType(DEFAULT_NOTIFICACION_NOPROCEDE_CONTENT_TYPE)
-            .acuerdo_presentacion(DEFAULT_ACUERDO_PRESENTACION)
-            .acuerdo_presentacionContentType(DEFAULT_ACUERDO_PRESENTACION_CONTENT_TYPE)
-            .notificacion_presentacion(DEFAULT_NOTIFICACION_PRESENTACION)
-            .notificacion_presentacionContentType(DEFAULT_NOTIFICACION_PRESENTACION_CONTENT_TYPE)
-            .status_trabajo(DEFAULT_STATUS_TRABAJO);
+            .status_trabajo(DEFAULT_STATUS_TRABAJO)
+            .oficio(DEFAULT_OFICIO)
+            .oficio_prevencion(DEFAULT_OFICIO_PREVENCION)
+            .notificacion_prevencion(DEFAULT_NOTIFICACION_PREVENCION)
+            .respuesta_prevencion(DEFAULT_RESPUESTA_PREVENCION)
+            .acta(DEFAULT_ACTA)
+            .acuerdo(DEFAULT_ACUERDO)
+            .notificacion(DEFAULT_NOTIFICACION)
+            .respuesta(DEFAULT_RESPUESTA);
         // Add required entity
         Origen origen = OrigenResourceIntTest.createEntity(em);
         em.persist(origen);
@@ -252,32 +206,18 @@ public class PeticionResourceIntTest {
         assertThat(testPeticion.getDireccion_solicitante()).isEqualTo(DEFAULT_DIRECCION_SOLICITANTE);
         assertThat(testPeticion.getActo_constar()).isEqualTo(DEFAULT_ACTO_CONSTAR);
         assertThat(testPeticion.getFecha()).isEqualTo(DEFAULT_FECHA);
-        assertThat(testPeticion.getOficio()).isEqualTo(DEFAULT_OFICIO);
-        assertThat(testPeticion.getOficioContentType()).isEqualTo(DEFAULT_OFICIO_CONTENT_TYPE);
         assertThat(testPeticion.getResponsable()).isEqualTo(DEFAULT_RESPONSABLE);
         assertThat(testPeticion.isStatus_prevencion()).isEqualTo(DEFAULT_STATUS_PREVENCION);
-        assertThat(testPeticion.getOficio_prevencion()).isEqualTo(DEFAULT_OFICIO_PREVENCION);
-        assertThat(testPeticion.getOficio_prevencionContentType()).isEqualTo(DEFAULT_OFICIO_PREVENCION_CONTENT_TYPE);
-        assertThat(testPeticion.getNotificacion_prevencion()).isEqualTo(DEFAULT_NOTIFICACION_PREVENCION);
-        assertThat(testPeticion.getNotificacion_prevencionContentType()).isEqualTo(DEFAULT_NOTIFICACION_PREVENCION_CONTENT_TYPE);
-        assertThat(testPeticion.getRespuesta_prevencion()).isEqualTo(DEFAULT_RESPUESTA_PREVENCION);
-        assertThat(testPeticion.getRespuesta_prevencionContentType()).isEqualTo(DEFAULT_RESPUESTA_PREVENCION_CONTENT_TYPE);
         assertThat(testPeticion.getTipo_evaluacion()).isEqualTo(DEFAULT_TIPO_EVALUACION);
-        assertThat(testPeticion.getActa_procede()).isEqualTo(DEFAULT_ACTA_PROCEDE);
-        assertThat(testPeticion.getActa_procedeContentType()).isEqualTo(DEFAULT_ACTA_PROCEDE_CONTENT_TYPE);
-        assertThat(testPeticion.getAcuerdo_procede()).isEqualTo(DEFAULT_ACUERDO_PROCEDE);
-        assertThat(testPeticion.getAcuerdo_procedeContentType()).isEqualTo(DEFAULT_ACUERDO_PROCEDE_CONTENT_TYPE);
-        assertThat(testPeticion.getNotificacion_procede()).isEqualTo(DEFAULT_NOTIFICACION_PROCEDE);
-        assertThat(testPeticion.getNotificacion_procedeContentType()).isEqualTo(DEFAULT_NOTIFICACION_PROCEDE_CONTENT_TYPE);
-        assertThat(testPeticion.getAcuerdo_noprocede()).isEqualTo(DEFAULT_ACUERDO_NOPROCEDE);
-        assertThat(testPeticion.getAcuerdo_noprocedeContentType()).isEqualTo(DEFAULT_ACUERDO_NOPROCEDE_CONTENT_TYPE);
-        assertThat(testPeticion.getNotificacion_noprocede()).isEqualTo(DEFAULT_NOTIFICACION_NOPROCEDE);
-        assertThat(testPeticion.getNotificacion_noprocedeContentType()).isEqualTo(DEFAULT_NOTIFICACION_NOPROCEDE_CONTENT_TYPE);
-        assertThat(testPeticion.getAcuerdo_presentacion()).isEqualTo(DEFAULT_ACUERDO_PRESENTACION);
-        assertThat(testPeticion.getAcuerdo_presentacionContentType()).isEqualTo(DEFAULT_ACUERDO_PRESENTACION_CONTENT_TYPE);
-        assertThat(testPeticion.getNotificacion_presentacion()).isEqualTo(DEFAULT_NOTIFICACION_PRESENTACION);
-        assertThat(testPeticion.getNotificacion_presentacionContentType()).isEqualTo(DEFAULT_NOTIFICACION_PRESENTACION_CONTENT_TYPE);
         assertThat(testPeticion.isStatus_trabajo()).isEqualTo(DEFAULT_STATUS_TRABAJO);
+        assertThat(testPeticion.getOficio()).isEqualTo(DEFAULT_OFICIO);
+        assertThat(testPeticion.getOficio_prevencion()).isEqualTo(DEFAULT_OFICIO_PREVENCION);
+        assertThat(testPeticion.getNotificacion_prevencion()).isEqualTo(DEFAULT_NOTIFICACION_PREVENCION);
+        assertThat(testPeticion.getRespuesta_prevencion()).isEqualTo(DEFAULT_RESPUESTA_PREVENCION);
+        assertThat(testPeticion.getActa()).isEqualTo(DEFAULT_ACTA);
+        assertThat(testPeticion.getAcuerdo()).isEqualTo(DEFAULT_ACUERDO);
+        assertThat(testPeticion.getNotificacion()).isEqualTo(DEFAULT_NOTIFICACION);
+        assertThat(testPeticion.getRespuesta()).isEqualTo(DEFAULT_RESPUESTA);
     }
 
     @Test
@@ -445,10 +385,10 @@ public class PeticionResourceIntTest {
 
     @Test
     @Transactional
-    public void checkOficioIsRequired() throws Exception {
+    public void checkResponsableIsRequired() throws Exception {
         int databaseSizeBeforeTest = peticionRepository.findAll().size();
         // set the field null
-        peticion.setOficio(null);
+        peticion.setResponsable(null);
 
         // Create the Peticion, which fails.
 
@@ -463,10 +403,10 @@ public class PeticionResourceIntTest {
 
     @Test
     @Transactional
-    public void checkResponsableIsRequired() throws Exception {
+    public void checkOficioIsRequired() throws Exception {
         int databaseSizeBeforeTest = peticionRepository.findAll().size();
         // set the field null
-        peticion.setResponsable(null);
+        peticion.setOficio(null);
 
         // Create the Peticion, which fails.
 
@@ -498,32 +438,18 @@ public class PeticionResourceIntTest {
             .andExpect(jsonPath("$.[*].direccion_solicitante").value(hasItem(DEFAULT_DIRECCION_SOLICITANTE.toString())))
             .andExpect(jsonPath("$.[*].acto_constar").value(hasItem(DEFAULT_ACTO_CONSTAR.toString())))
             .andExpect(jsonPath("$.[*].fecha").value(hasItem(sameInstant(DEFAULT_FECHA))))
-            .andExpect(jsonPath("$.[*].oficioContentType").value(hasItem(DEFAULT_OFICIO_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].oficio").value(hasItem(Base64Utils.encodeToString(DEFAULT_OFICIO))))
             .andExpect(jsonPath("$.[*].responsable").value(hasItem(DEFAULT_RESPONSABLE.toString())))
             .andExpect(jsonPath("$.[*].status_prevencion").value(hasItem(DEFAULT_STATUS_PREVENCION.booleanValue())))
-            .andExpect(jsonPath("$.[*].oficio_prevencionContentType").value(hasItem(DEFAULT_OFICIO_PREVENCION_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].oficio_prevencion").value(hasItem(Base64Utils.encodeToString(DEFAULT_OFICIO_PREVENCION))))
-            .andExpect(jsonPath("$.[*].notificacion_prevencionContentType").value(hasItem(DEFAULT_NOTIFICACION_PREVENCION_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].notificacion_prevencion").value(hasItem(Base64Utils.encodeToString(DEFAULT_NOTIFICACION_PREVENCION))))
-            .andExpect(jsonPath("$.[*].respuesta_prevencionContentType").value(hasItem(DEFAULT_RESPUESTA_PREVENCION_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].respuesta_prevencion").value(hasItem(Base64Utils.encodeToString(DEFAULT_RESPUESTA_PREVENCION))))
             .andExpect(jsonPath("$.[*].tipo_evaluacion").value(hasItem(DEFAULT_TIPO_EVALUACION)))
-            .andExpect(jsonPath("$.[*].acta_procedeContentType").value(hasItem(DEFAULT_ACTA_PROCEDE_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].acta_procede").value(hasItem(Base64Utils.encodeToString(DEFAULT_ACTA_PROCEDE))))
-            .andExpect(jsonPath("$.[*].acuerdo_procedeContentType").value(hasItem(DEFAULT_ACUERDO_PROCEDE_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].acuerdo_procede").value(hasItem(Base64Utils.encodeToString(DEFAULT_ACUERDO_PROCEDE))))
-            .andExpect(jsonPath("$.[*].notificacion_procedeContentType").value(hasItem(DEFAULT_NOTIFICACION_PROCEDE_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].notificacion_procede").value(hasItem(Base64Utils.encodeToString(DEFAULT_NOTIFICACION_PROCEDE))))
-            .andExpect(jsonPath("$.[*].acuerdo_noprocedeContentType").value(hasItem(DEFAULT_ACUERDO_NOPROCEDE_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].acuerdo_noprocede").value(hasItem(Base64Utils.encodeToString(DEFAULT_ACUERDO_NOPROCEDE))))
-            .andExpect(jsonPath("$.[*].notificacion_noprocedeContentType").value(hasItem(DEFAULT_NOTIFICACION_NOPROCEDE_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].notificacion_noprocede").value(hasItem(Base64Utils.encodeToString(DEFAULT_NOTIFICACION_NOPROCEDE))))
-            .andExpect(jsonPath("$.[*].acuerdo_presentacionContentType").value(hasItem(DEFAULT_ACUERDO_PRESENTACION_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].acuerdo_presentacion").value(hasItem(Base64Utils.encodeToString(DEFAULT_ACUERDO_PRESENTACION))))
-            .andExpect(jsonPath("$.[*].notificacion_presentacionContentType").value(hasItem(DEFAULT_NOTIFICACION_PRESENTACION_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].notificacion_presentacion").value(hasItem(Base64Utils.encodeToString(DEFAULT_NOTIFICACION_PRESENTACION))))
-            .andExpect(jsonPath("$.[*].status_trabajo").value(hasItem(DEFAULT_STATUS_TRABAJO.booleanValue())));
+            .andExpect(jsonPath("$.[*].status_trabajo").value(hasItem(DEFAULT_STATUS_TRABAJO.booleanValue())))
+            .andExpect(jsonPath("$.[*].oficio").value(hasItem(DEFAULT_OFICIO.toString())))
+            .andExpect(jsonPath("$.[*].oficio_prevencion").value(hasItem(DEFAULT_OFICIO_PREVENCION.toString())))
+            .andExpect(jsonPath("$.[*].notificacion_prevencion").value(hasItem(DEFAULT_NOTIFICACION_PREVENCION.toString())))
+            .andExpect(jsonPath("$.[*].respuesta_prevencion").value(hasItem(DEFAULT_RESPUESTA_PREVENCION.toString())))
+            .andExpect(jsonPath("$.[*].acta").value(hasItem(DEFAULT_ACTA.toString())))
+            .andExpect(jsonPath("$.[*].acuerdo").value(hasItem(DEFAULT_ACUERDO.toString())))
+            .andExpect(jsonPath("$.[*].notificacion").value(hasItem(DEFAULT_NOTIFICACION.toString())))
+            .andExpect(jsonPath("$.[*].respuesta").value(hasItem(DEFAULT_RESPUESTA.toString())));
     }
 
     @Test
@@ -545,32 +471,18 @@ public class PeticionResourceIntTest {
             .andExpect(jsonPath("$.direccion_solicitante").value(DEFAULT_DIRECCION_SOLICITANTE.toString()))
             .andExpect(jsonPath("$.acto_constar").value(DEFAULT_ACTO_CONSTAR.toString()))
             .andExpect(jsonPath("$.fecha").value(sameInstant(DEFAULT_FECHA)))
-            .andExpect(jsonPath("$.oficioContentType").value(DEFAULT_OFICIO_CONTENT_TYPE))
-            .andExpect(jsonPath("$.oficio").value(Base64Utils.encodeToString(DEFAULT_OFICIO)))
             .andExpect(jsonPath("$.responsable").value(DEFAULT_RESPONSABLE.toString()))
             .andExpect(jsonPath("$.status_prevencion").value(DEFAULT_STATUS_PREVENCION.booleanValue()))
-            .andExpect(jsonPath("$.oficio_prevencionContentType").value(DEFAULT_OFICIO_PREVENCION_CONTENT_TYPE))
-            .andExpect(jsonPath("$.oficio_prevencion").value(Base64Utils.encodeToString(DEFAULT_OFICIO_PREVENCION)))
-            .andExpect(jsonPath("$.notificacion_prevencionContentType").value(DEFAULT_NOTIFICACION_PREVENCION_CONTENT_TYPE))
-            .andExpect(jsonPath("$.notificacion_prevencion").value(Base64Utils.encodeToString(DEFAULT_NOTIFICACION_PREVENCION)))
-            .andExpect(jsonPath("$.respuesta_prevencionContentType").value(DEFAULT_RESPUESTA_PREVENCION_CONTENT_TYPE))
-            .andExpect(jsonPath("$.respuesta_prevencion").value(Base64Utils.encodeToString(DEFAULT_RESPUESTA_PREVENCION)))
             .andExpect(jsonPath("$.tipo_evaluacion").value(DEFAULT_TIPO_EVALUACION))
-            .andExpect(jsonPath("$.acta_procedeContentType").value(DEFAULT_ACTA_PROCEDE_CONTENT_TYPE))
-            .andExpect(jsonPath("$.acta_procede").value(Base64Utils.encodeToString(DEFAULT_ACTA_PROCEDE)))
-            .andExpect(jsonPath("$.acuerdo_procedeContentType").value(DEFAULT_ACUERDO_PROCEDE_CONTENT_TYPE))
-            .andExpect(jsonPath("$.acuerdo_procede").value(Base64Utils.encodeToString(DEFAULT_ACUERDO_PROCEDE)))
-            .andExpect(jsonPath("$.notificacion_procedeContentType").value(DEFAULT_NOTIFICACION_PROCEDE_CONTENT_TYPE))
-            .andExpect(jsonPath("$.notificacion_procede").value(Base64Utils.encodeToString(DEFAULT_NOTIFICACION_PROCEDE)))
-            .andExpect(jsonPath("$.acuerdo_noprocedeContentType").value(DEFAULT_ACUERDO_NOPROCEDE_CONTENT_TYPE))
-            .andExpect(jsonPath("$.acuerdo_noprocede").value(Base64Utils.encodeToString(DEFAULT_ACUERDO_NOPROCEDE)))
-            .andExpect(jsonPath("$.notificacion_noprocedeContentType").value(DEFAULT_NOTIFICACION_NOPROCEDE_CONTENT_TYPE))
-            .andExpect(jsonPath("$.notificacion_noprocede").value(Base64Utils.encodeToString(DEFAULT_NOTIFICACION_NOPROCEDE)))
-            .andExpect(jsonPath("$.acuerdo_presentacionContentType").value(DEFAULT_ACUERDO_PRESENTACION_CONTENT_TYPE))
-            .andExpect(jsonPath("$.acuerdo_presentacion").value(Base64Utils.encodeToString(DEFAULT_ACUERDO_PRESENTACION)))
-            .andExpect(jsonPath("$.notificacion_presentacionContentType").value(DEFAULT_NOTIFICACION_PRESENTACION_CONTENT_TYPE))
-            .andExpect(jsonPath("$.notificacion_presentacion").value(Base64Utils.encodeToString(DEFAULT_NOTIFICACION_PRESENTACION)))
-            .andExpect(jsonPath("$.status_trabajo").value(DEFAULT_STATUS_TRABAJO.booleanValue()));
+            .andExpect(jsonPath("$.status_trabajo").value(DEFAULT_STATUS_TRABAJO.booleanValue()))
+            .andExpect(jsonPath("$.oficio").value(DEFAULT_OFICIO.toString()))
+            .andExpect(jsonPath("$.oficio_prevencion").value(DEFAULT_OFICIO_PREVENCION.toString()))
+            .andExpect(jsonPath("$.notificacion_prevencion").value(DEFAULT_NOTIFICACION_PREVENCION.toString()))
+            .andExpect(jsonPath("$.respuesta_prevencion").value(DEFAULT_RESPUESTA_PREVENCION.toString()))
+            .andExpect(jsonPath("$.acta").value(DEFAULT_ACTA.toString()))
+            .andExpect(jsonPath("$.acuerdo").value(DEFAULT_ACUERDO.toString()))
+            .andExpect(jsonPath("$.notificacion").value(DEFAULT_NOTIFICACION.toString()))
+            .andExpect(jsonPath("$.respuesta").value(DEFAULT_RESPUESTA.toString()));
     }
 
     @Test
@@ -600,32 +512,18 @@ public class PeticionResourceIntTest {
             .direccion_solicitante(UPDATED_DIRECCION_SOLICITANTE)
             .acto_constar(UPDATED_ACTO_CONSTAR)
             .fecha(UPDATED_FECHA)
-            .oficio(UPDATED_OFICIO)
-            .oficioContentType(UPDATED_OFICIO_CONTENT_TYPE)
             .responsable(UPDATED_RESPONSABLE)
             .status_prevencion(UPDATED_STATUS_PREVENCION)
-            .oficio_prevencion(UPDATED_OFICIO_PREVENCION)
-            .oficio_prevencionContentType(UPDATED_OFICIO_PREVENCION_CONTENT_TYPE)
-            .notificacion_prevencion(UPDATED_NOTIFICACION_PREVENCION)
-            .notificacion_prevencionContentType(UPDATED_NOTIFICACION_PREVENCION_CONTENT_TYPE)
-            .respuesta_prevencion(UPDATED_RESPUESTA_PREVENCION)
-            .respuesta_prevencionContentType(UPDATED_RESPUESTA_PREVENCION_CONTENT_TYPE)
             .tipo_evaluacion(UPDATED_TIPO_EVALUACION)
-            .acta_procede(UPDATED_ACTA_PROCEDE)
-            .acta_procedeContentType(UPDATED_ACTA_PROCEDE_CONTENT_TYPE)
-            .acuerdo_procede(UPDATED_ACUERDO_PROCEDE)
-            .acuerdo_procedeContentType(UPDATED_ACUERDO_PROCEDE_CONTENT_TYPE)
-            .notificacion_procede(UPDATED_NOTIFICACION_PROCEDE)
-            .notificacion_procedeContentType(UPDATED_NOTIFICACION_PROCEDE_CONTENT_TYPE)
-            .acuerdo_noprocede(UPDATED_ACUERDO_NOPROCEDE)
-            .acuerdo_noprocedeContentType(UPDATED_ACUERDO_NOPROCEDE_CONTENT_TYPE)
-            .notificacion_noprocede(UPDATED_NOTIFICACION_NOPROCEDE)
-            .notificacion_noprocedeContentType(UPDATED_NOTIFICACION_NOPROCEDE_CONTENT_TYPE)
-            .acuerdo_presentacion(UPDATED_ACUERDO_PRESENTACION)
-            .acuerdo_presentacionContentType(UPDATED_ACUERDO_PRESENTACION_CONTENT_TYPE)
-            .notificacion_presentacion(UPDATED_NOTIFICACION_PRESENTACION)
-            .notificacion_presentacionContentType(UPDATED_NOTIFICACION_PRESENTACION_CONTENT_TYPE)
-            .status_trabajo(UPDATED_STATUS_TRABAJO);
+            .status_trabajo(UPDATED_STATUS_TRABAJO)
+            .oficio(UPDATED_OFICIO)
+            .oficio_prevencion(UPDATED_OFICIO_PREVENCION)
+            .notificacion_prevencion(UPDATED_NOTIFICACION_PREVENCION)
+            .respuesta_prevencion(UPDATED_RESPUESTA_PREVENCION)
+            .acta(UPDATED_ACTA)
+            .acuerdo(UPDATED_ACUERDO)
+            .notificacion(UPDATED_NOTIFICACION)
+            .respuesta(UPDATED_RESPUESTA);
 
         restPeticionMockMvc.perform(put("/api/peticions")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -644,32 +542,18 @@ public class PeticionResourceIntTest {
         assertThat(testPeticion.getDireccion_solicitante()).isEqualTo(UPDATED_DIRECCION_SOLICITANTE);
         assertThat(testPeticion.getActo_constar()).isEqualTo(UPDATED_ACTO_CONSTAR);
         assertThat(testPeticion.getFecha()).isEqualTo(UPDATED_FECHA);
-        assertThat(testPeticion.getOficio()).isEqualTo(UPDATED_OFICIO);
-        assertThat(testPeticion.getOficioContentType()).isEqualTo(UPDATED_OFICIO_CONTENT_TYPE);
         assertThat(testPeticion.getResponsable()).isEqualTo(UPDATED_RESPONSABLE);
         assertThat(testPeticion.isStatus_prevencion()).isEqualTo(UPDATED_STATUS_PREVENCION);
-        assertThat(testPeticion.getOficio_prevencion()).isEqualTo(UPDATED_OFICIO_PREVENCION);
-        assertThat(testPeticion.getOficio_prevencionContentType()).isEqualTo(UPDATED_OFICIO_PREVENCION_CONTENT_TYPE);
-        assertThat(testPeticion.getNotificacion_prevencion()).isEqualTo(UPDATED_NOTIFICACION_PREVENCION);
-        assertThat(testPeticion.getNotificacion_prevencionContentType()).isEqualTo(UPDATED_NOTIFICACION_PREVENCION_CONTENT_TYPE);
-        assertThat(testPeticion.getRespuesta_prevencion()).isEqualTo(UPDATED_RESPUESTA_PREVENCION);
-        assertThat(testPeticion.getRespuesta_prevencionContentType()).isEqualTo(UPDATED_RESPUESTA_PREVENCION_CONTENT_TYPE);
         assertThat(testPeticion.getTipo_evaluacion()).isEqualTo(UPDATED_TIPO_EVALUACION);
-        assertThat(testPeticion.getActa_procede()).isEqualTo(UPDATED_ACTA_PROCEDE);
-        assertThat(testPeticion.getActa_procedeContentType()).isEqualTo(UPDATED_ACTA_PROCEDE_CONTENT_TYPE);
-        assertThat(testPeticion.getAcuerdo_procede()).isEqualTo(UPDATED_ACUERDO_PROCEDE);
-        assertThat(testPeticion.getAcuerdo_procedeContentType()).isEqualTo(UPDATED_ACUERDO_PROCEDE_CONTENT_TYPE);
-        assertThat(testPeticion.getNotificacion_procede()).isEqualTo(UPDATED_NOTIFICACION_PROCEDE);
-        assertThat(testPeticion.getNotificacion_procedeContentType()).isEqualTo(UPDATED_NOTIFICACION_PROCEDE_CONTENT_TYPE);
-        assertThat(testPeticion.getAcuerdo_noprocede()).isEqualTo(UPDATED_ACUERDO_NOPROCEDE);
-        assertThat(testPeticion.getAcuerdo_noprocedeContentType()).isEqualTo(UPDATED_ACUERDO_NOPROCEDE_CONTENT_TYPE);
-        assertThat(testPeticion.getNotificacion_noprocede()).isEqualTo(UPDATED_NOTIFICACION_NOPROCEDE);
-        assertThat(testPeticion.getNotificacion_noprocedeContentType()).isEqualTo(UPDATED_NOTIFICACION_NOPROCEDE_CONTENT_TYPE);
-        assertThat(testPeticion.getAcuerdo_presentacion()).isEqualTo(UPDATED_ACUERDO_PRESENTACION);
-        assertThat(testPeticion.getAcuerdo_presentacionContentType()).isEqualTo(UPDATED_ACUERDO_PRESENTACION_CONTENT_TYPE);
-        assertThat(testPeticion.getNotificacion_presentacion()).isEqualTo(UPDATED_NOTIFICACION_PRESENTACION);
-        assertThat(testPeticion.getNotificacion_presentacionContentType()).isEqualTo(UPDATED_NOTIFICACION_PRESENTACION_CONTENT_TYPE);
         assertThat(testPeticion.isStatus_trabajo()).isEqualTo(UPDATED_STATUS_TRABAJO);
+        assertThat(testPeticion.getOficio()).isEqualTo(UPDATED_OFICIO);
+        assertThat(testPeticion.getOficio_prevencion()).isEqualTo(UPDATED_OFICIO_PREVENCION);
+        assertThat(testPeticion.getNotificacion_prevencion()).isEqualTo(UPDATED_NOTIFICACION_PREVENCION);
+        assertThat(testPeticion.getRespuesta_prevencion()).isEqualTo(UPDATED_RESPUESTA_PREVENCION);
+        assertThat(testPeticion.getActa()).isEqualTo(UPDATED_ACTA);
+        assertThat(testPeticion.getAcuerdo()).isEqualTo(UPDATED_ACUERDO);
+        assertThat(testPeticion.getNotificacion()).isEqualTo(UPDATED_NOTIFICACION);
+        assertThat(testPeticion.getRespuesta()).isEqualTo(UPDATED_RESPUESTA);
     }
 
     @Test

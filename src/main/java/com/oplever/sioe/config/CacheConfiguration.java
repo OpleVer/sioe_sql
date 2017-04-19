@@ -47,6 +47,7 @@ public class CacheConfiguration {
             cm.createCache(com.oplever.sioe.domain.Peticion.class.getName(), jcacheConfiguration);
             cm.createCache(com.oplever.sioe.domain.Origen.class.getName() + ".peticions", jcacheConfiguration);
             cm.createCache(com.oplever.sioe.domain.Peticionario.class.getName() + ".peticions", jcacheConfiguration);
+            cm.createCache(com.oplever.sioe.domain.Anexo.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

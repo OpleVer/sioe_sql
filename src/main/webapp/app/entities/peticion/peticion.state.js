@@ -123,32 +123,18 @@
                                 direccion_solicitante: null,
                                 acto_constar: null,
                                 fecha: null,
-                                oficio: null,
-                                oficioContentType: null,
                                 responsable: null,
                                 status_prevencion: null,
-                                oficio_prevencion: null,
-                                oficio_prevencionContentType: null,
-                                notificacion_prevencion: null,
-                                notificacion_prevencionContentType: null,
-                                respuesta_prevencion: null,
-                                respuesta_prevencionContentType: null,
                                 tipo_evaluacion: null,
-                                acta_procede: null,
-                                acta_procedeContentType: null,
-                                acuerdo_procede: null,
-                                acuerdo_procedeContentType: null,
-                                notificacion_procede: null,
-                                notificacion_procedeContentType: null,
-                                acuerdo_noprocede: null,
-                                acuerdo_noprocedeContentType: null,
-                                notificacion_noprocede: null,
-                                notificacion_noprocedeContentType: null,
-                                acuerdo_presentacion: null,
-                                acuerdo_presentacionContentType: null,
-                                notificacion_presentacion: null,
-                                notificacion_presentacionContentType: null,
                                 status_trabajo: null,
+                                oficio: null,
+                                oficio_prevencion: null,
+                                notificacion_prevencion: null,
+                                respuesta_prevencion: null,
+                                acta: null,
+                                acuerdo: null,
+                                notificacion: null,
+                                respuesta: null,
                                 id: null
                             };
                         }
@@ -164,7 +150,7 @@
             parent: 'peticion',
             url: '/{id}/edit',
             data: {
-                authorities: ['ROLE_ADMIN']
+                authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -220,6 +206,31 @@
                 $uibModal.open({
                     templateUrl: 'app/entities/peticion/peticion-evaluar.html',
                     controller: 'PeticionEvaluarController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['Peticion', function(Peticion) {
+                            return Peticion.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('peticion', null, { reload: 'peticion' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
+        .state('peticion.prevencion', {
+            parent: 'peticion',
+            url: '/{id}/prevencion',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/peticion/peticion-prevencion.html',
+                    controller: 'PeticionPrevencionController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',

@@ -54,13 +54,6 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="oficio" type="longblob">
-                <constraints nullable="false" />
-            </column>
-            <column name="oficio_content_type" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-
             <column name="responsable" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
@@ -69,81 +62,43 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="oficio_prevencion" type="longblob">
-                <constraints nullable="true" />
-            </column>
-            <column name="oficio_prevencion_content_type" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="notificacion_prevencion" type="longblob">
-                <constraints nullable="true" />
-            </column>
-            <column name="notificacion_prevencion_content_type" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="respuesta_prevencion" type="longblob">
-                <constraints nullable="true" />
-            </column>
-            <column name="respuesta_prevencion_content_type" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
             <column name="tipo_evaluacion" type="integer">
                 <constraints nullable="true" />
             </column>
 
-            <column name="acta_procede" type="longblob">
-                <constraints nullable="true" />
-            </column>
-            <column name="acta_procede_content_type" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="acuerdo_procede" type="longblob">
-                <constraints nullable="true" />
-            </column>
-            <column name="acuerdo_procede_content_type" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="notificacion_procede" type="longblob">
-                <constraints nullable="true" />
-            </column>
-            <column name="notificacion_procede_content_type" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="acuerdo_noprocede" type="longblob">
-                <constraints nullable="true" />
-            </column>
-            <column name="acuerdo_noprocede_content_type" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="notificacion_noprocede" type="longblob">
-                <constraints nullable="true" />
-            </column>
-            <column name="notificacion_noprocede_content_type" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="acuerdo_presentacion" type="longblob">
-                <constraints nullable="true" />
-            </column>
-            <column name="acuerdo_presentacion_content_type" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="notificacion_presentacion" type="longblob">
-                <constraints nullable="true" />
-            </column>
-            <column name="notificacion_presentacion_content_type" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
             <column name="status_trabajo" type="bit">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="oficio" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="oficio_prevencion" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="notificacion_prevencion" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="respuesta_prevencion" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="acta" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="acuerdo" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="notificacion" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="respuesta" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 

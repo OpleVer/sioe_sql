@@ -6,19 +6,11 @@
     <dl class="dl-horizontal jh-entity-details">
       <dt><span>Peticionario</span></dt>
       <dd>
-          <p>{{vm.peticion.peticionario.tipo}}</p>
+          <span>{{vm.peticion.peticionario.tipo}}</span>
       </dd>
         <dt><span data-translate="sioeSqlApp.peticion.nombre_solicitante">Nombre Solicitante</span></dt>
         <dd>
-            <span>{{vm.peticion.nombre_solicitante}}</span>
-        </dd>
-        <dt><span data-translate="sioeSqlApp.peticion.paterno_solicitante">Paterno Solicitante</span></dt>
-        <dd>
-            <span>{{vm.peticion.paterno_solicitante}}</span>
-        </dd>
-        <dt><span data-translate="sioeSqlApp.peticion.materno_solicitante">Materno Solicitante</span></dt>
-        <dd>
-            <span>{{vm.peticion.materno_solicitante}}</span>
+            <span>{{vm.peticion.nombre_solicitante}} {{vm.peticion.paterno_solicitante}} {{vm.peticion.materno_solicitante}}</span>
         </dd>
         <dt><span data-translate="sioeSqlApp.peticion.cargo_solicitante">Cargo Solicitante</span></dt>
         <dd>
@@ -27,10 +19,6 @@
         <dt><span data-translate="sioeSqlApp.peticion.direccion_solicitante">Direccion Solicitante</span></dt>
         <dd>
             <span>{{vm.peticion.direccion_solicitante}}</span>
-        </dd>
-        <dt><span data-translate="sioeSqlApp.peticion.acto_constar">Acto Constar</span></dt>
-        <dd>
-            <span>{{vm.peticion.acto_constar}}</span>
         </dd>
         <dt><span>Fecha</span></dt>
         <dd>
@@ -45,7 +33,7 @@
         </dd>
         <dt><span>Autoridad</span></dt>
         <dd>
-            <p>{{vm.peticion.origen.nombre}}</p>
+            <span>{{vm.peticion.origen.nombre}}</span>
         </dd>
         <dt><span>Responsable</span></dt>
         <dd>

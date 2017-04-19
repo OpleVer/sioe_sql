@@ -80,14 +80,6 @@
             ]
         },
         {
-            "fieldName": "oficio",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "any",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
             "fieldName": "responsable",
             "fieldType": "String",
             "fieldValidateRules": [
@@ -99,62 +91,47 @@
             "fieldType": "Boolean"
         },
         {
-            "fieldName": "oficio_prevencion",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "any"
-        },
-        {
-            "fieldName": "notificacion_prevencion",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "any"
-        },
-        {
-            "fieldName": "respuesta_prevencion",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "any"
-        },
-        {
             "fieldName": "tipo_evaluacion",
             "fieldType": "Integer"
         },
         {
-            "fieldName": "acta_procede",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "any"
-        },
-        {
-            "fieldName": "acuerdo_procede",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "any"
-        },
-        {
-            "fieldName": "notificacion_procede",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "any"
-        },
-        {
-            "fieldName": "acuerdo_noprocede",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "any"
-        },
-        {
-            "fieldName": "notificacion_noprocede",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "any"
-        },
-        {
-            "fieldName": "acuerdo_presentacion",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "any"
-        },
-        {
-            "fieldName": "notificacion_presentacion",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "any"
-        },
-        {
             "fieldName": "status_trabajo",
             "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "oficio",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "oficio_prevencion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "notificacion_prevencion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "respuesta_prevencion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "acta",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "acuerdo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "notificacion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "respuesta",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20170411183659",

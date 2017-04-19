@@ -1,0 +1,47 @@
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myPeticionLabel">Prevencion</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group">
+            <label class="control-label" for="field_numero">Numero de Peticion</label>
+            <input type="text" class="form-control" name="numero" id="field_numero"
+                    ng-model="vm.peticion.numero" readonly
+                    required/>
+        </div>
+
+<div class="form-group">
+    <label class="control-label" data-translate="sioeSqlApp.peticion.status_prevencion" for="field_status_prevencion">Asignar a Prevención</label>
+        <input type="checkbox" name="status_prevencion" id="field_status_prevencion"
+                  ng-model="vm.peticion.status_prevencion"/>
+</div>
+
+<div class="form-group" ng-if="vm.peticion.status_prevencion">
+    <label class="control-label" data-translate="sioeSqlApp.peticion.oficio_prevencion" for="field_oficio_prevencion">Oficio Prevencion</label>
+    <input type="text" class="form-control" name="oficio_prevencion" id="field_oficio_prevencion"
+            ng-model="vm.peticion.oficio_prevencion"
+            />
+</div>
+<div class="form-group" ng-if="vm.peticion.status_prevencion">
+    <label class="control-label" data-translate="sioeSqlApp.peticion.notificacion_prevencion" for="field_notificacion_prevencion">Notificacion Prevencion</label>
+    <input type="text" class="form-control" name="notificacion_prevencion" id="field_notificacion_prevencion"
+            ng-model="vm.peticion.notificacion_prevencion"
+            />
+</div>
+<div class="form-group" ng-if="vm.peticion.status_prevencion">
+    <label class="control-label" data-translate="sioeSqlApp.peticion.respuesta_prevencion" for="field_respuesta_prevencion">Respuesta Prevencion</label>
+    <input type="text" class="form-control" name="respuesta_prevencion" id="field_respuesta_prevencion"
+            ng-model="vm.peticion.respuesta_prevencion"
+            />
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+        <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+    </button>
+    <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+        <span class="glyphicon glyphicon-transfer"></span>&nbsp;<span>Guardar</span>
+    </button>
+</div>

@@ -4,7 +4,7 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myPeticionLabel">Nueva Solicitud</h4>
+        <h4 class="modal-title" id="myPeticionLabel">Capturar Solicitud</h4>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
@@ -21,10 +21,11 @@
             <div ng-show="editForm.numero.$invalid">
                 <p class="help-block"
                     ng-show="editForm.numero.$error.required">
-                    Campo requerido.
+                    Campo Obligatorio.
                 </p>
             </div>
         </div>
+
         <div class="form-group">
             <label for="field_peticionario">Peticionario</label>
             <select class="form-control" id="field_peticionario" name="peticionario" ng-model="vm.peticion.peticionario" ng-options="peticionario as peticionario.tipo for peticionario in vm.peticionarios track by peticionario.tipo" required>
@@ -33,9 +34,12 @@
         <div ng-show="editForm.peticionario.$invalid">
             <p class="help-block"
                 ng-show="editForm.peticionario.$error.required">
-                Campo requerido.
+                Campo Obligatorio.
             </p>
         </div>
+
+
+
         <div class="form-group">
             <label class="control-label" data-translate="sioeSqlApp.peticion.nombre_solicitante" for="field_nombre_solicitante">Nombre Solicitante</label>
             <input type="text" class="form-control" name="nombre_solicitante" id="field_nombre_solicitante"
@@ -44,7 +48,7 @@
             <div ng-show="editForm.nombre_solicitante.$invalid">
                 <p class="help-block"
                     ng-show="editForm.nombre_solicitante.$error.required">
-                    Campo requerido.
+                    Campo Obligatorio.
                 </p>
             </div>
         </div>
@@ -56,7 +60,7 @@
             <div ng-show="editForm.paterno_solicitante.$invalid">
                 <p class="help-block"
                     ng-show="editForm.paterno_solicitante.$error.required">
-                    Campo requerido.
+                    Campo Obligatorio.
                 </p>
             </div>
         </div>
@@ -68,7 +72,7 @@
             <div ng-show="editForm.materno_solicitante.$invalid">
                 <p class="help-block"
                     ng-show="editForm.materno_solicitante.$error.required">
-                    Campo requerido.
+                    Campo Obligatorio.
                 </p>
             </div>
         </div>
@@ -80,7 +84,7 @@
             <div ng-show="editForm.cargo_solicitante.$invalid">
                 <p class="help-block"
                     ng-show="editForm.cargo_solicitante.$error.required">
-                    Campo requerido.
+                    Campo Obligatorio.
                 </p>
             </div>
         </div>
@@ -92,7 +96,7 @@
             <div ng-show="editForm.direccion_solicitante.$invalid">
                 <p class="help-block"
                     ng-show="editForm.direccion_solicitante.$error.required">
-                    Campo requerido.
+                    Campo Obligatorio.
                 </p>
             </div>
         </div>
@@ -104,7 +108,7 @@
             <div ng-show="editForm.acto_constar.$invalid">
                 <p class="help-block"
                     ng-show="editForm.acto_constar.$error.required">
-                    Campo requerido.
+                    Campo Obligatorio.
                 </p>
                 <p class="help-block"
                     ng-show="editForm.acto_constar.$error.maxlength">
@@ -112,6 +116,19 @@
                 </p>
             </div>
         </div>
+        <div class="form-group">
+            <label class="control-label" for="field_oficio">Oficio</label>
+            <input type="text" class="form-control" name="oficio" id="field_oficio"
+                    ng-model="vm.peticion.oficio"
+                    required/>
+            <div ng-show="editForm.oficio.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.oficio.$error.required">
+                    Campo Obligatorio.
+                </p>
+            </div>
+        </div>
+
         <div class="form-group">
             <label class="control-label" for="field_fecha">Fecha</label>
                 <div class="input-group">
@@ -124,7 +141,7 @@
             <div ng-show="editForm.fecha.$invalid">
                 <p class="help-block"
                     ng-show="editForm.fecha.$error.required">
-                    Campo requerido.
+                    Campo Obligatorio.
                 </p>
                 <p class="help-block"
                     ng-show="editForm.fecha.$error.ZonedDateTimelocal">
@@ -132,45 +149,15 @@
                 </p>
             </div>
         </div>
-        <div class="form-group" ngf-drop ngf-change="vm.setOficio($file, vm.peticion)">
-            <label class="control-label" for="field_oficio">Oficio</label>
-            <div>
-                <div ng-if="vm.peticion.oficio" class="help-block clearfix">
-                    <a class="pull-left" ng-click="vm.openFile(vm.peticion.oficioContentType, vm.peticion.oficio)">open</a><br>
-                    <span class="pull-left">{{vm.peticion.oficioContentType}}, {{vm.byteSize(vm.peticion.oficio)}}</span>
-                    <button type="button" ng-click="vm.peticion.oficio=null;vm.peticion.oficioContentType=null;"
-                            class="btn btn-default btn-xs pull-right">
-                        <span class="glyphicon glyphicon-remove"></span>
-                    </button>
-                </div>
-                <button type="button" ngf-select class="btn btn-default btn-primary"
-                        ngf-change="vm.setOficio($file, vm.peticion)">
-                        <span class="glyphicon glyphicon-folder-open"></span>
-                      PDF
-
-                </button>
-            </div>
-            <input type="hidden" class="form-control" name="oficio" id="field_oficio"
-                    ng-model="vm.peticion.oficio"
-                    required/>
-            <input type="hidden" class="form-control" name="oficioContentType" id="field_oficioContentType"
-                    ng-model="vm.peticion.oficioContentType" />
-            <div ng-show="editForm.oficio.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.oficio.$error.required">
-                    Campo requerido.
-                </p>
-            </div>
-        </div>
         <div class="form-group">
-            <label for="field_origen">Autoridad</label>
+            <label for="field_origen">Origen</label>
             <select class="form-control" id="field_origen" name="origen" ng-model="vm.peticion.origen" ng-options="origen as origen.nombre for origen in vm.origens track by origen.nombre" required>
             </select>
         </div>
         <div ng-show="editForm.origen.$invalid">
             <p class="help-block"
                 ng-show="editForm.origen.$error.required">
-                Campo requerido.
+                Campo Obligatorio.
             </p>
         </div>
         <div class="form-group">
@@ -181,91 +168,17 @@
             <div ng-show="editForm.responsable.$invalid">
                 <p class="help-block"
                     ng-show="editForm.responsable.$error.required">
-                    Campo requerido.
+                    Campo Obligatorio.
                 </p>
             </div>
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="sioeSqlApp.peticion.status_prevencion" for="field_status_prevencion">Asignar a Prevencion</label>
-                <input type="checkbox" name="status_prevencion" id="field_status_prevencion"
-                          ng-model="vm.peticion.status_prevencion"/>
-        </div>
-        <div class="form-group" ngf-drop ngf-change="vm.setOficio_prevencion($file, vm.peticion)">
-            <label class="control-label" data-translate="sioeSqlApp.peticion.oficio_prevencion" for="field_oficio_prevencion">Oficio de Prevencion</label>
-            <div>
-                <div ng-if="vm.peticion.oficio_prevencion" class="help-block clearfix">
-                    <a class="pull-left" ng-click="vm.openFile(vm.peticion.oficio_prevencionContentType, vm.peticion.oficio_prevencion)">open</a><br>
-                    <span class="pull-left">{{vm.peticion.oficio_prevencionContentType}}, {{vm.byteSize(vm.peticion.oficio_prevencion)}}</span>
-                    <button type="button" ng-click="vm.peticion.oficio_prevencion=null;vm.peticion.oficio_prevencionContentType=null;"
-                            class="btn btn-default btn-xs pull-right">
-                        <span class="glyphicon glyphicon-remove"></span>
-                    </button>
-                </div>
-                <button type="button" ngf-select class="btn btn-default btn-primary"
-                        ngf-change="vm.setOficio_prevencion($file, vm.peticion)">
-                        <span class="glyphicon glyphicon-folder-open"></span>
-                    PDF
-                </button>
-            </div>
-            <input type="hidden" class="form-control" name="oficio_prevencion" id="field_oficio_prevencion"
-                    ng-model="vm.peticion.oficio_prevencion"
-                    />
-            <input type="hidden" class="form-control" name="oficio_prevencionContentType" id="field_oficio_prevencionContentType"
-                    ng-model="vm.peticion.oficio_prevencionContentType" />
-        </div>
-        <div class="form-group" ngf-drop ngf-change="vm.setNotificacion_prevencion($file, vm.peticion)">
-            <label class="control-label" data-translate="sioeSqlApp.peticion.notificacion_prevencion" for="field_notificacion_prevencion">Notificacion de Prevencion</label>
-            <div>
-                <div ng-if="vm.peticion.notificacion_prevencion" class="help-block clearfix">
-                    <a class="pull-left" ng-click="vm.openFile(vm.peticion.notificacion_prevencionContentType, vm.peticion.notificacion_prevencion)">open</a><br>
-                    <span class="pull-left">{{vm.peticion.notificacion_prevencionContentType}}, {{vm.byteSize(vm.peticion.notificacion_prevencion)}}</span>
-                    <button type="button" ng-click="vm.peticion.notificacion_prevencion=null;vm.peticion.notificacion_prevencionContentType=null;"
-                            class="btn btn-default btn-xs pull-right">
-                        <span class="glyphicon glyphicon-remove"></span>
-                    </button>
-                </div>
-                <button type="button" ngf-select class="btn btn-default btn-primary"
-                        ngf-change="vm.setNotificacion_prevencion($file, vm.peticion)">
-                        <span class="glyphicon glyphicon-folder-open"></span>
-                    PDF
-                </button>
-            </div>
-            <input type="hidden" class="form-control" name="notificacion_prevencion" id="field_notificacion_prevencion"
-                    ng-model="vm.peticion.notificacion_prevencion"
-                    />
-            <input type="hidden" class="form-control" name="notificacion_prevencionContentType" id="field_notificacion_prevencionContentType"
-                    ng-model="vm.peticion.notificacion_prevencionContentType" />
-        </div>
-        <div class="form-group" ngf-drop ngf-change="vm.setRespuesta_prevencion($file, vm.peticion)">
-            <label class="control-label" data-translate="sioeSqlApp.peticion.respuesta_prevencion" for="field_respuesta_prevencion">Respuesta de Prevencion</label>
-            <div>
-                <div ng-if="vm.peticion.respuesta_prevencion" class="help-block clearfix">
-                    <a class="pull-left" ng-click="vm.openFile(vm.peticion.respuesta_prevencionContentType, vm.peticion.respuesta_prevencion)">open</a><br>
-                    <span class="pull-left">{{vm.peticion.respuesta_prevencionContentType}}, {{vm.byteSize(vm.peticion.respuesta_prevencion)}}</span>
-                    <button type="button" ng-click="vm.peticion.respuesta_prevencion=null;vm.peticion.respuesta_prevencionContentType=null;"
-                            class="btn btn-default btn-xs pull-right">
-                        <span class="glyphicon glyphicon-remove"></span>
-                    </button>
-                </div>
-                <button type="button" ngf-select class="btn btn-default btn-primary"
-                        ngf-change="vm.setRespuesta_prevencion($file, vm.peticion)">
-                        <span class="glyphicon glyphicon-folder-open"></span>
-                    PDF
-                </button>
-            </div>
-            <input type="hidden" class="form-control" name="respuesta_prevencion" id="field_respuesta_prevencion"
-                    ng-model="vm.peticion.respuesta_prevencion"
-                    />
-            <input type="hidden" class="form-control" name="respuesta_prevencionContentType" id="field_respuesta_prevencionContentType"
-                    ng-model="vm.peticion.respuesta_prevencionContentType" />
-        </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="vm.clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
         </button>
-        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-success">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Guardar</span>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
         </button>
     </div>
 </form>
